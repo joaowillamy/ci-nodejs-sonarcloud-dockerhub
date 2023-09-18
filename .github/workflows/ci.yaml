@@ -12,6 +12,7 @@ jobs:
     env:
       GITHUB_CONTEXT: check-application
     steps:
+      # checks
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
         with:
@@ -19,6 +20,15 @@ jobs:
           cache: 'npm'
       - run: npm ci
       - run: npm test
+
+      # sonar cloud
+      - name: SonarCloud Scan
+        uses: SonarSource/sonarcloud-github-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+
+      # docker hub
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3
       - name: Set up Docker Buildx
@@ -36,8 +46,3 @@ jobs:
           tags: joaowillamy/nodeci:latest
       - name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
-      - name: SonarCloud Scan
-        uses: SonarSource/sonarcloud-github-action@master
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
