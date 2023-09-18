@@ -29,7 +29,9 @@ jobs:
       - name: Build and push
         uses: docker/build-push-action@v5
         with:
+          context: .
           push: true
           tags: user/app:latest
       - name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
+        run: echo ${{ secrets.DOCKERHUB_USERNAME }}
