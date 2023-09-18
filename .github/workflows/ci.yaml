@@ -31,6 +31,6 @@ jobs:
         with:
           context: .
           push: true
-          tags: user/app:latest
+          tags: joaowillamy/nodeci:latest
       - name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
