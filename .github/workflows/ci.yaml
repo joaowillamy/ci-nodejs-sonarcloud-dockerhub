@@ -9,6 +9,8 @@ on:
 jobs:
   check-application:
     runs-on: ubuntu-latest
+    env:
+      GITHUB_CONTEXT: check-application
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
