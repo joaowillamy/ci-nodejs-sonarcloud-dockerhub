@@ -1,4 +1,5 @@
 export function App() {
+
   return (
     <div className="container">
       <div className="form-container" id="login-form">
@@ -8,7 +9,7 @@ export function App() {
           <input type="text" id="username" name="username" required />
           <label htmlFor="password">Password</label>
           <input type="password" id="password" name="password" required />
-          <button type="submit">Login</button>
+          <button onClick={(e) => e.preventDefault()}>Login</button>
         </form>
         <p>Don't have an account? <a href="#" id="signup-link">Sign up</a></p>
       </div>
