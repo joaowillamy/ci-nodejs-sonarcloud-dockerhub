@@ -6,8 +6,8 @@
     "start": "nx serve",
     "build": "nx build",
     "test": "nx test --coverage",
-    "e2e": "nx affected --target=e2e --parallel=3",
-    "lint": "nx affected --target=lint --parallel=3",
+    "e2e": "nx run e2e:e2e --parallel=3",
+    "lint": "nx run e2e:lint --parallel=3",
     "e2e:dev": "nx run e2e:e2e --dev-server-target=org:serve --browser=chrome --headed --exit=false --watch"
   },
   "private": true,
