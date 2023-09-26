@@ -20,6 +20,8 @@ jobs:
           cache: 'npm'
       - run: npm ci
       - run: npm test
+      - run: npm run lint
+      - run: npm run e2e
 
       # sonar cloud
       - name: SonarCloud Scan
